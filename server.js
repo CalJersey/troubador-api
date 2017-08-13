@@ -1,17 +1,14 @@
 //import dependencies
 
-var express = require("express"),
-  mongoose = require("mongoose"),
-  bodyParser = require("body-parser"),
-  passport = require("passport"),
-  session = require("express-session"),
-  cookieParser = require("cookie-parser"),
-
-db = require("./models");
-(controllers = require("./controllers")), (LocalStrategy = require("passport-local")
+var express = require('express'),
+  mongoose = require('mongoose'),
+  bodyParser = require('body-parser'),
+  passport = require('passport'),
+  session = require('express-session'),
+  cookieParser = require('cookie-parser'),
+  db = require('./models');
+(controllers = require('./controllers')), (LocalStrategy = require('passport-local')
   .Strategy);
-
-
 
 //create instances
 var app = express(),
@@ -19,24 +16,21 @@ var app = express(),
 
 var User = db.User;
 
-
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 app.use(cookieParser());
 app.use(
   session({
-    secret: "spinachsecret007", // change this!
+    secret: 'spinachsecret007', // change this!
     resave: false,
-    saveUninitialized: false
-  })
+    saveUninitialized: false,
+  }),
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 //Prevent CORS errors
 app.use(function(req, res, next) {
@@ -44,7 +38,7 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader(
     'Access-Control-Allow-Methods',
-    'GET,HEAD,OPTIONS,POST,PUT,DELETE'
+    'GET,HEAD,OPTIONS,POST,PUT,DELETE',
   );
 
   //passport config
@@ -53,7 +47,7 @@ app.use(function(req, res, next) {
   passport.deserializeUser(db.User.deserializeUser());
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
+    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
   );
 
   //Remove caching
@@ -99,7 +93,7 @@ router.post('/cities', function(req, res) {
   var newCity = {
     name: req.body.name,
     imageURL: req.body.image,
-    description: req.body.description
+    description: req.body.description,
   };
 
   db.City.create(newCity, function(err, newCity) {
@@ -134,17 +128,14 @@ router.get('/cities/posts/:id', function(req, res) {
     if (err) {
       res.status(500).send(err);
     }
-    return (
-      db.Post.find({city:city}, function(err, posts) {
-        if (err) {
-          res.status(500).send(err);
-        }
-        return res.json(posts);
-      })
-    );
+    return db.Post.find({ city: city }, function(err, posts) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      return res.json(posts);
+    });
   });
 });
-
 
 //delete city
 router.delete('/cities/:id', function(req, res) {
@@ -194,7 +185,7 @@ router.post('/users', function(req, res) {
     username: req.body.username,
     password: req.body.password,
     hometown: req.body.hometown,
-    image: req.body.image
+    image: req.body.image,
   };
 
   db.User.create(newUser, function(err, newUser) {
@@ -272,7 +263,7 @@ router.post('/posts', function(req, res) {
     _user: req.body._user,
     _city: req.body._city,
     title: req.body.title,
-    text: req.body.text
+    text: req.body.text,
   };
 
   db.Post.create(bodyPost, function(err, newPost) {
@@ -308,102 +299,32 @@ router.delete('/posts/:id', function(req, res) {
   });
 });
 
-
 //auth routes
-app.get("/api/users", controllers.user.index);
-app.delete("/api/users/:user_id", controllers.user.destroy);
-app.post("/signup", function signup(req, res) {
+app.get('/api/users', controllers.user.index);
+app.delete('/api/users/:user_id', controllers.user.destroy);
+app.post('/signup', function signup(req, res) {
   console.log(`${req.body.username} ${req.body.password}`);
   User.register(
     new User({ username: req.body.username }),
     req.body.password,
     function(err, newUser) {
-      passport.authenticate("local")(req, res, function() {
+      passport.authenticate('local')(req, res, function() {
         res.send(newUser);
       });
-    }
+    },
   );
 });
 
-app.post("/login", passport.authenticate("local"), function(req, res) {
+app.post('/login', passport.authenticate('local'), function(req, res) {
   console.log(JSON.stringify(req.user));
   res.send(req.user);
 });
-app.get("/logout", function(req, res) {
-  console.log("BEFORE logout", req);
+app.get('/logout', function(req, res) {
+  console.log('BEFORE logout', req);
   req.logout();
   res.send(req);
-  console.log("AFTER logout", req);
+  console.log('AFTER logout', req);
 });
-
-/////////////////////////////////////////////////////////
-/*router
-  .route('/cities/:id/posts')
-  .get(function(req, res) {
-    db.Post.find({ cityId: req.body.cityId }, function(err, posts) {
-      if (err) res.status(500).json({ error: err.message });
-      res.json(posts);
-    });
-  });
-
-
-router
-  .route('/posts')
-  .post(function(req, res) {
-    var post = new Post();
-    post.save(function(err) {
-      if (err) res.status(500).json({ error: err.message });
-      res.json({ message: 'Post successfully added!' });
-    });
-  });
-
-router
-  .route('/posts/:postId')
-  .get(function(req, res) {
-<<<<<<< HEAD
-    //looks at our Post Schema
-    Post.findById(req.params.postId,function(err, post) {
-      if (err) res.status(500).json({error:err.message});
-      //                                      responds with a json object of our database posts.
-      res.json(post);
-=======
-    Post.findById(req.params.postId, function(err, posts) {
-      if (err) res.status(500).json({ error: err.message });
-      res.json(posts);
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
-    });
-  })
-  .put(function(req, res) {
-    Post.findById(req.params.postId, function(err, post) {
-      if (err) res.status(500).json({ error: err.message });
-      post.title = req.body.title;
-      post.text = req.body.text;
-      post.cityId = req.body.cityId;
-<<<<<<< HEAD
-      //save leieeieieieieieieipost
-      post.save(function(err) {
-        if (err) res.status(500).json({error:err.message});
-        res.json({ message: "Post has been updated" });
-      });
-    })
-  })
-  //delete method for removing a post from our database
-=======
-
-      post.save(function(err) {
-        if (err) res.status(500).json({ error: err.message });
-        res.json({ message: 'post has been updated' });
-      });
-    });
-  })
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
-  .delete(function(req, res) {
-    Post.remove({ _id: req.params.postId }, function(err, post) {
-      if (err) res.status(500).json({ error: err.message });
-      res.json({ message: 'Post has been deleted' });
-    });
-  });
-*/
 
 //use router config when we call /API
 app.use('/api', router);
