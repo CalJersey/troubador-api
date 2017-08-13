@@ -1,17 +1,14 @@
 //import dependencies
 
-var express = require("express"),
-  mongoose = require("mongoose"),
-  bodyParser = require("body-parser"),
-  passport = require("passport"),
-  session = require("express-session"),
-  cookieParser = require("cookie-parser"),
-
-db = require("./models");
-(controllers = require("./controllers")), (LocalStrategy = require("passport-local")
-  .Strategy);
-
-
+var express = require('express'),
+  mongoose = require('mongoose'),
+  bodyParser = require('body-parser'),
+  passport = require('passport'),
+  session = require('express-session'),
+  cookieParser = require('cookie-parser'),
+  db = require('./models'),
+  controllers = require('./controllers'),
+  localStrategy = require('passport-local').Strategy;
 
 //create instances
 var app = express(),
@@ -19,16 +16,30 @@ var app = express(),
 
 var User = db.User;
 
+//Prevent CORS errors
+app.use(function(req, res, next) {
+  console.log('CORS IS RUNNING');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET,HEAD,OPTIONS,POST,PUT,DELETE'
+  );
+
+  res.setHeader('Cache-Control', 'no-cache');
+  next();
+});
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// app.use(cors());
 
 app.use(cookieParser());
 app.use(
   session({
-    secret: "spinachsecret007", // change this!
+    secret: 'spinachsecret007', // change this!
     resave: false,
     saveUninitialized: false
   })
@@ -37,18 +48,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-//Prevent CORS errors
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET,HEAD,OPTIONS,POST,PUT,DELETE'
-  );
-
   //passport config
-  passport.use(new LocalStrategy(db.User.authenticate()));
+  passport.use(new localStrategy(db.User.authenticate()));
   passport.serializeUser(db.User.serializeUser());
   passport.deserializeUser(db.User.deserializeUser());
   res.setHeader(
@@ -134,17 +136,14 @@ router.get('/cities/posts/:id', function(req, res) {
     if (err) {
       res.status(500).send(err);
     }
-    return (
-      db.Post.find({city:city}, function(err, posts) {
-        if (err) {
-          res.status(500).send(err);
-        }
-        return res.json(posts);
-      })
-    );
+    return db.Post.find({ city: city }, function(err, posts) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      return res.json(posts);
+    });
   });
 });
-
 
 //delete city
 router.delete('/cities/:id', function(req, res) {
@@ -308,32 +307,31 @@ router.delete('/posts/:id', function(req, res) {
   });
 });
 
-
 //auth routes
-app.get("/api/users", controllers.user.index);
-app.delete("/api/users/:user_id", controllers.user.destroy);
-app.post("/signup", function signup(req, res) {
+app.get('/api/users', controllers.user.index);
+app.delete('/api/users/:user_id', controllers.user.destroy);
+app.post('/signup', function signup(req, res) {
   console.log(`${req.body.username} ${req.body.password}`);
   User.register(
     new User({ username: req.body.username }),
     req.body.password,
     function(err, newUser) {
-      passport.authenticate("local")(req, res, function() {
+      passport.authenticate('local')(req, res, function() {
         res.send(newUser);
       });
     }
   );
 });
 
-app.post("/login", passport.authenticate("local"), function(req, res) {
+app.post('/login', passport.authenticate('local'), function(req, res) {
   console.log(JSON.stringify(req.user));
   res.send(req.user);
 });
-app.get("/logout", function(req, res) {
-  console.log("BEFORE logout", req);
+app.get('/logout', function(req, res) {
+  console.log('BEFORE logout', req);
   req.logout();
   res.send(req);
-  console.log("AFTER logout", req);
+  console.log('AFTER logout', req);
 });
 
 /////////////////////////////////////////////////////////

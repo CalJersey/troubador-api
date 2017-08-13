@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import Header from "./Header";
-import $ from "jquery-ajax";
-import { Link } from "react-router";
+import React, { Component } from 'react';
+import Header from './Header';
+import $ from 'jquery-ajax';
+import { Link } from 'react-router';
 // import { browserHistory } from "react-router";
-import CityContainer from "./CityContainer";
-import PostBox from "./PostBox";
-import PageContent from "./PageContent";
-import CityInfo from "./CityInfo";
+import CityContainer from './CityContainer';
+import PostBox from './PostBox';
+import PageContent from './PageContent';
+import CityInfo from './CityInfo';
 // Card, Row, Col,
-import { Button, Input } from "react-materialize";
-import "../MainStyle.css";
+import { Button, Input } from 'react-materialize';
+import '../MainStyle.css';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      id: "",
+      username: '',
+      password: '',
+      id: '',
       isAuthenticated: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +30,7 @@ class Main extends Component {
     let username = this.state.username;
     let password = this.state.password;
     $.ajax({
-      method: "POST",
+      method: 'POST',
       url: `http://localhost:3001/login`,
       data: {
         username: username,
@@ -38,19 +38,17 @@ class Main extends Component {
       }
     }).then(
       res => {
-        console.log("res is ", res);
+        console.log('res is ', res);
         this.setState({ isAuthenticated: true, id: res._id });
       },
       err => {
-        console.log("oops!");
+        console.log('oops!');
         console.log(err);
       }
-
-
     );
   }
   handleLogout() {
-    this.setState({ isAuthenticated: false, id: "" });
+    this.setState({ isAuthenticated: false, id: '' });
   }
   handleUsernameChange(e) {
     this.setState({ username: e.target.value });
@@ -62,10 +60,10 @@ class Main extends Component {
     return {
       isAuthenticated: false
     };
-   }
+  }
   render() {
     if (this.state.isAuthenticated === false) {
-      console.log("user is not logged in");
+      console.log('user is not logged in');
       return (
         <div className="MainPage">
           <div className="row container">
@@ -92,10 +90,11 @@ class Main extends Component {
           </div>
           <Header handleSubmit={event => this.handleSubmit} />
           <CityContainer />
+          <PostBox url={'localhost:3001/api/posts'} />
         </div>
       );
     } else {
-      console.log("user is logged in");
+      console.log('user is logged in');
       return (
         <div>
           <p>logged in</p>
