@@ -26,7 +26,7 @@ app.use(
     secret: 'spinachsecret007', // change this!
     resave: false,
     saveUninitialized: false,
-  }),
+  })
 );
 
 app.use(passport.initialize());
