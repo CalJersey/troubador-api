@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader(
     'Access-Control-Allow-Methods',
-    'GET,HEAD,OPTIONS,POST,PUT,DELETE',
+    'GET,HEAD,OPTIONS,POST,PUT,DELETE'
   );
 
   //passport config
@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
   passport.deserializeUser(db.User.deserializeUser());
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
+    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
   );
 
   //Remove caching
@@ -93,7 +93,7 @@ router.post('/cities', function(req, res) {
   var newCity = {
     name: req.body.name,
     imageURL: req.body.image,
-    description: req.body.description,
+    description: req.body.description
   };
 
   db.City.create(newCity, function(err, newCity) {
@@ -185,7 +185,7 @@ router.post('/users', function(req, res) {
     username: req.body.username,
     password: req.body.password,
     hometown: req.body.hometown,
-    image: req.body.image,
+    image: req.body.image
   };
 
   db.User.create(newUser, function(err, newUser) {
@@ -263,7 +263,7 @@ router.post('/posts', function(req, res) {
     _user: req.body._user,
     _city: req.body._city,
     title: req.body.title,
-    text: req.body.text,
+    text: req.body.text
   };
 
   db.Post.create(bodyPost, function(err, newPost) {
