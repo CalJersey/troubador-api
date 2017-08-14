@@ -311,7 +311,7 @@ app.post('/signup', function signup(req, res) {
       passport.authenticate('local')(req, res, function() {
         res.send(newUser);
       });
-    },
+    }
   );
 });
 
