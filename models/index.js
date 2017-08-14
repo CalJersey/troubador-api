@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/Wayfarer');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Wayfarer');
 
 module.exports.City = require('./city.js');
 module.exports.Post = require('./post.js');
