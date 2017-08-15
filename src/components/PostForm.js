@@ -56,36 +56,36 @@ class PostForm extends Component {
   render() {
     return (
       <div className="modal-window">
-        <button className="btn btn-primary" onClick={this.openModal}>
-          Add New Post
+        <button className="btn btn-primary add-post-button" onClick={this.openModal}>
+          Add New Comment
         </button>
 
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
           <ModalHeader>
             <ModalClose onClick={this.hideModal} />
-            <ModalTitle>Modal title</ModalTitle>
+            <ModalTitle>Add a new Destination!</ModalTitle>
           </ModalHeader>
           <ModalBody>
             <form>
               <input
                 type="text"
-                placeholder="title"
+                placeholder="Name of location..."
                 value={this.state.title}
                 onChange={this.handleTitleChange}
               />
               <input
                 type="text"
-                placeholder="text"
+                placeholder="What you like about it..."
                 value={this.state.text}
                 onChange={this.handleTextChange}
               />
             </form>
           </ModalBody>
           <ModalFooter>
-            <button className="btn btn-default" onClick={this.hideModal}>
+            <button className="btn btn-default close-post" onClick={this.hideModal}>
               Close
             </button>
-            <button className="btn btn-primary" onClick={this.handleSubmit}>
+            <button className="btn btn-primary save-post" onClick={this.handleSubmit}>
               Save Post
             </button>
           </ModalFooter>

@@ -13,9 +13,13 @@ class PostList extends Component {
       return <Post text={post.text} title={post.title} id={post['_id']} key={post['_id']} />;
     });
     return (
-      <div className="PostList">
+  <div className="PostList">
+     <div className="row container">
+        <div className="col-sm-8 post-text">
         {postNodes}
-      </div>
+        </div>
+     </div>
+ </div>
 
     );
   }

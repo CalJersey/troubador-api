@@ -76,39 +76,40 @@ hideModal = () => {
 
 
         <button className='btn btn-primary add-city-bttn' onClick={this.openModal}>
-          +
+          Add New City
         </button>
 
 
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
           <ModalHeader>
             <ModalClose onClick={this.hideModal}/>
-            <ModalTitle>Modal title</ModalTitle>
+            <ModalTitle>Add a new City to visit!</ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <form>
+            <form className="add-city-form">
                 <input
                   type='text'
-                  placeholder='name'
+                  placeholder='City name...'
                   value={ this.state.name }
                   onChange={ this.handleNameChange } />
                 <input
                   type='text'
-                  placeholder='imageURL'
+                  placeholder='Image link...'
                   value={ this.state.imageURL }
                   onChange={ this.handleImageChange } />
+                <br />
                   <input
                     type='text'
-                    placeholder='description'
+                    placeholder='Description'
                     value={ this.state.description }
                     onChange={ this.handleDescriptionChange } />
             </form>
           </ModalBody>
           <ModalFooter>
-            <button className='btn btn-default' onClick={this.hideModal}>
+            <button className='btn btn-default close-city' onClick={this.hideModal}>
               Close
             </button>
-            <button className='btn btn-primary' onClick={this.handleSubmit}>
+            <button className='btn btn-primary save-city' onClick={this.handleSubmit}>
               Save City
             </button>
           </ModalFooter>

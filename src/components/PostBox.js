@@ -124,12 +124,12 @@ class PostBox extends Component {
   render() {
     return (
       <div className="PostBox">
-          <h2>What people say:</h2>
+          <h2>What people are saying</h2>
           <div className="row">
-            <div className="col-sm-2">
+            <div className="col-md-12">
           <PostForm onPostSubmit={ this.handlePostSubmit }/>
           </div>
-            <div className="col-sm-2">
+            <div className="col-md-12 list-item">
           <PostList
             loadPostsFromServer={this.loadPostsFromServer}
             onPostDelete={this.handlePostDelete}

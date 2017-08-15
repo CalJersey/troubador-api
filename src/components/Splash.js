@@ -35,6 +35,7 @@ class Splash extends Component {
       res => {
         console.log("res is ", res);
         this.setState({ isAuthenticated: true, id: res._id });
+        window.location = "/login";
       },
       err => {
         console.log("oops!");
@@ -52,39 +53,73 @@ class Splash extends Component {
     this.setState({ password: e.target.value });
   }
   getInitialState() {
-    return {
-      isAuthenticated: false
-    };
+    return { isAuthenticated: false };
   }
   render() {
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
         <div className="MainPage">
-          <Header handleSubmit={event => this.handleSubmit} />
-          <div className="row container">
-            <form onSubmit={this.handleSubmit}>
-              <Input
-                type="text"
-                placeholder="username"
-                value={this.state.username}
-                onChange={this.handleUsernameChange}
-              />
-              <Input
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-              />
-              <Button type="submit" value="login">
-                Login
-              </Button>
-            </form>
-            <Link role="button" to="signup">
-              <h3>Sign Up</h3>
-            </Link>
+          <Header isAuthenticated={this.state.isAuthenticated} />
+
+          <div className="row container splash-login-container">
+            <div className="col-md-12 splash-login-form">
+
+              <form onSubmit={this.handleSubmit}>
+                <Input
+                  id="input1"
+                  type="text"
+                  placeholder="username"
+                  value={this.state.username}
+                  onChange={this.handleUsernameChange}
+                />
+                <Input
+                  id="input2"
+                  type="password"
+                  placeholder="password"
+                  value={this.state.password}
+                  onChange={this.handlePasswordChange}
+                />
+                <Button id="login-button" type="submit" value="login">
+                  Login
+                </Button>
+              </form>
+            </div>
+
           </div>
-          <img src="https://bluemountainthyme.files.wordpress.com/2013/08/img_8131.jpg" />
+
+          <div className="row">
+            <div className="col-md-12 image-splash" />
+          </div>
+          <main className="flex-center">
+            <div id="left-topic">
+              <h3>Top Cities</h3>
+              <hr />
+              <p>
+                Find tips on a wide range of topics, from where to find
+                historical landmarks to names of the best shopping centers.This
+                is a perfectly tailored website for your next adventure.
+              </p>
+            </div>
+
+            <div id="middle-topic">
+              <h3>Destinations</h3>
+              <hr />
+              <p>
+                Our site is jam packed with the information you need for all
+                your travels. Get excited and picture what you will experience.
+              </p>
+            </div>
+
+            <div id="right-topic">
+              <h3>Adventures</h3>
+              <hr />
+              <p>
+                Make your life easier and use Wayfarer to plan your next trip.
+                Go explore and discover your next adventure.
+              </p>
+            </div>
+          </main>
         </div>
       );
     } else {
