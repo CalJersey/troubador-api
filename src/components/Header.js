@@ -43,11 +43,7 @@ class Header extends Component {
           <a id="signup" href="/signup">
             Sign Up
           </a>
-      /* <UserAuth
-              handleSubmit={this.props.handleSubmit}
-              loginUrl={this.props.loginUrl}
-              setAuthState={this.setAuthState}
-              /> */
+
 
         </div>
       </div>

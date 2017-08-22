@@ -21,9 +21,9 @@ class CityInfo extends Component {
     return (
       <div className="CityInfo">
         <h2>{this.state.data.name}</h2>
-      <div className="image-space">
+        <div className="image-space">
           <img src={this.state.data.imageUrl} height="75%" width="75%" align="middle" />
-      </div>
+        </div>
       </div>
     );
   }

@@ -31,55 +31,44 @@ class CityForm extends Component {
     this.setState({ imageURL: e.target.value });
   }
 
-
-handleDescriptionChange(e) {
-  this.setState({ description: e.target.value });
-}
-
-
-handleSubmit(e) {
-  e.preventDefault();
-  this.hideModal();
-  let name = this.state.name.trim();
-  let imageURL = this.state.imageURL.trim();
-  let description = this.state.description.trim();
-  if (!name || !imageURL || !description) {
-    return;
+  handleDescriptionChange(e) {
+        this.setState({ description: e.target.value });
   }
-  this.props.onCitySubmit({ name: name, imageURL: imageURL, description: description });
-  this.setState({name: "", imageURL: "", description: ""});
 
-}
+  handleSubmit(e) {
+    e.preventDefault();
+    this.hideModal();
+    let name = this.state.name.trim();
+    let imageURL = this.state.imageURL.trim();
+    let description = this.state.description.trim();
+    if (!name || !imageURL || !description) {
+      return;
+    }
+    this.props.onCitySubmit({ name: name, imageURL: imageURL, description: description });
+    this.setState({name: "", imageURL: "", description: ""});
+  }
 
-//opens our modal
-openModal = () => {
-  this.setState({
-    isOpen: true
-  });
-};
+  //opens our modal
+  openModal = () => {
+    this.setState({
+      isOpen: true
+    });
+  };
 
-//closes our modal
-hideModal = () => {
-  this.setState({
-    isOpen: false
-  });
-};
-
-
-
+  //closes our modal
+  hideModal = () => {
+    this.setState({
+      isOpen: false
+    });
+  };
 
   render() {
     return (
 
       <div className="modal-window">
-
-
-
         <button className='btn btn-primary add-city-bttn' onClick={this.openModal}>
           Add New City
         </button>
-
-
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
           <ModalHeader>
             <ModalClose onClick={this.hideModal}/>
@@ -98,12 +87,12 @@ hideModal = () => {
                   value={ this.state.imageURL }
                   onChange={ this.handleImageChange } />
                 <br />
-                  <input
-                    type='text'
-                    placeholder='Description'
-                    value={ this.state.description }
-                    onChange={ this.handleDescriptionChange } />
-            </form>
+                <input
+                  type='text'
+                  placeholder='Description'
+                  value={ this.state.description }
+                  onChange={ this.handleDescriptionChange } />
+              </form>
           </ModalBody>
           <ModalFooter>
             <button className='btn btn-default close-city' onClick={this.hideModal}>
@@ -113,13 +102,9 @@ hideModal = () => {
               Save City
             </button>
           </ModalFooter>
-
         </Modal>
-
-
       </div>
-)
-
+    )
   }
 }
 

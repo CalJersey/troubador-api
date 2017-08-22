@@ -88,7 +88,7 @@ class PostBox extends Component {
         newPost['_id'] = res.data['_id']
 
         post.unshift(newPost)
-      this.loadPostsFromServer()  
+      this.loadPostsFromServer()
 
         //handleAddPost(res);
       })
@@ -132,7 +132,7 @@ class PostBox extends Component {
   render() {
     return (
       <div className="PostBox">
-          <h2>What people are saying</h2>
+          <h3>What people are saying</h3>
           <div className="row">
             <div className="col-md-12">
           <PostForm onPostSubmit={ this.handlePostSubmit }/>

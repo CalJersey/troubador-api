@@ -15,29 +15,25 @@ class CityList extends Component {
     axios.get(this.props.citiesUrl)
     .then(res => {
       this.setState({data: res.data})
-      console.log('x',res.data  )
-
     })
   }
 
   handleSubmit(e) {
-      console.log(e);
-      let city = this.state.data;
-      let newCity = city.concat(e);
-      this.setState({data: newCity});
-      console.log(this.props.url);
+    console.log(e);
+    let city = this.state.data;
+    let newCity = city.concat(e);
+    this.setState({data: newCity});
+    console.log(this.props.url);
 
-      fetch(this.props.citiesUrl, {
-      method: 'post',
-      body: e})
-        .then(res => {
-          console.log("RES:" , res);
-          this.setState({ data: res });
-
-        })
-        .catch(err => {
-          console.error("OOPSIES", err);
-        });
+    fetch(this.props.citiesUrl, {
+    method: 'post',
+    body: e})
+    .then(res => {
+      this.setState({ data: res.data });
+    })
+    .catch(err => {
+      console.error("OOPSIES", err);
+    });
   }
 
   handleCityAdd(city) {
@@ -48,26 +44,27 @@ class CityList extends Component {
     })
     .then(function (response) {
        console.log(response);
-     })
-     .catch(function (error) {
-       console.log(error);
-     });
-}
-componentDidMount() {
-  this.loadCitiesFromServer()
-}
+    })
+   .catch(function (error) {
+     console.log(error);
+   })
+  }
+  componentDidMount() {
+    this.loadCitiesFromServer()
+  }
 
-render() {
-  let cityNodes = this.state.data.map(city => {
-    return <CityListItem
-            citiesUrl={this.props.citiesUrl}
-            name={city.name}
-            description={city.description}
-            imageUrl={city.imageUrl}
-            id={city['_id']}
-            key={city['_id']} />;
+  render(){
+    let cityNodes = this.state.data.map(city => {
+    return (
+      <CityListItem
+        name={city.name}
+        description={city.description}
+        id={city['_id']}
+        key={city['_id']}
+        imageUrl={city.imageUrl}
+        citiesUrl={this.props.citiesUrl} />
+    )
   });
-
   return(
     <div className="CityList">
       <div className="CityListItemParent">
@@ -77,9 +74,7 @@ render() {
         <CityForm onCitySubmit={this.handleSubmit}/>
       </div>
     </div>
-  )
-}
-
+  )}
 }
 
 export default CityList;

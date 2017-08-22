@@ -100,18 +100,22 @@ class Post extends Component {
       )
     } else {
       return(
-
-        <div className="editPostForm">
+        <div className="viewPost">
           <form action="#" onSubmit={this.handlePostUpdate} method="PUT" className="post-update-form">
+          <hr />
+          <div className="postTitle">
             <input type="text" name="title" value={this.state.title} size={this.state.title.length} onChange={this.handleTitleChange} required />
+          </div>
+          <hr />
+          <div className="postContent">
             <input type="text" name="text" size={this.state.text.length} value={this.state.text} onChange={this.handleTextChange} required />
-            <div className='post-footer'>
-              <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
-              <button className='btn btn-primary save-post'>Save Changes</button>
-            </div>
-          </form>
-
-        </div>
+          </div>
+          <div className='post-footer'>
+            <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
+            <button className='btn btn-primary save-post'>Save Changes</button>
+          </div>
+        </form>
+      </div>
       )
     }
   }

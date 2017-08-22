@@ -1,4 +1,4 @@
-/*This is for main body*/
+``````¡/*This is for main body*/
 
 html,
 body {
@@ -35,14 +35,16 @@ h1 {
 h2 {
 font-family: 'Supermercado One', cursive;
 color: #f27935;
-font-size: 40px;
+font-size: 56px;
 text-align: center;
+margin-top: 20px;
 
 }
 
 h3 {
   color: #f27935;
   font-family: 'Supermercado One', cursive;
+  font-size: 36px;
 }
 
 
@@ -85,11 +87,11 @@ img {
   margin-left: ;
 }
 
-.move-right {
+  /*.move-right {
   float: right;
-  /*height: 45px;*/
+height: 45px;
   width: auto;
-}
+}*/
 
 .content-body {
   margin-top: 0;
@@ -100,7 +102,7 @@ img {
   margin-left: 15%;
 }
 
-.city-main {
+/*.city-main {
   text-align: left;
   background-color: white;
   margin-left: 20%;
@@ -111,6 +113,7 @@ img {
   max-width: 450px;
 
 }
+*/
 
 #login-button {
   background-color: #f27935;
@@ -123,15 +126,23 @@ img {
 }
 
 .city-list {
-  margin-left: ;
   display: inline;
 }
+
+.CityContainer {
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 30px;
+}
+
+div.CityListItem{width:100%; height: 150px; background-size:cover;}
+div.cityName{width:100%; height: 150px; background-color: transparent;}
 
 li {
   list-style-type: none;
 }
 
-.city-list-add {
+.city-add {
   margin-top: 30px;
   margin-left: 20%;
   text-align: right;
@@ -339,5 +350,3 @@ li {
   border-radius: 10px;
   margin: 10% 5% 20% 0%;
 }
-div.CityListItem{width:100%; height: 150px; background-size:cover;}
-div.cityName{width:100%; height: 150px; background-color: transparent}
