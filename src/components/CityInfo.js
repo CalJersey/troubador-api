@@ -7,7 +7,7 @@ class CityInfo extends Component {
     this.state = {data: []};
   }
   loadCityFromServer(){
-    axios.get(`${this.props.citiesUrl}${this.props.cityId}`)
+    axios.get(`${this.props.citiesGetUrl}${this.props.cityId}`)
     .then(res => {
       this.setState({data: res.data})
       console.log('p',res.data  )
@@ -22,7 +22,7 @@ class CityInfo extends Component {
       <div className="CityInfo">
         <h2>{this.state.data.name}</h2>
         <div className="image-space">
-          <img src={this.state.data.imageUrl} height="75%" width="75%" align="middle" />
+          <img src={this.state.data.imageUrl} height="75%" width="75%" />
         </div>
       </div>
     );

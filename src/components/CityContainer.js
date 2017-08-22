@@ -10,7 +10,8 @@ class CityContainer extends Component {
       <div className="CityContainer">
         <CityList
           cityId={this.props.cityId}
-          citiesUrl={this.props.citiesUrl} />
+          citiesViewUrl={this.props.citiesViewUrl}
+          citiesGetUrl={this.props.citiesGetUrl}/>
         <div className="city-add">
           <CityForm onCitySubmit={this.handleSubmit}/>
         </div>

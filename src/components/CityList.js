@@ -12,7 +12,7 @@ class CityList extends Component {
   }
 
   loadCitiesFromServer(){
-    axios.get(this.props.citiesUrl)
+    axios.get(this.props.citiesGetUrl)
     .then(res => {
       this.setState({data: res.data})
     })
@@ -25,7 +25,7 @@ class CityList extends Component {
     this.setState({data: newCity});
     console.log(this.props.url);
 
-    fetch(this.props.citiesUrl, {
+    fetch(this.props.citiesGetUrl, {
     method: 'post',
     body: e})
     .then(res => {
@@ -37,10 +37,10 @@ class CityList extends Component {
   }
 
   handleCityAdd(city) {
-    axios.post(this.props.citiesUrl, {
+    axios.post(this.props.citiesGetUrl, {
       name: city.name,
       imageUrl: city.imageUrl,
-      description: city.dedscription
+      description: city.description
     })
     .then(function (response) {
        console.log(response);
@@ -62,7 +62,7 @@ class CityList extends Component {
         id={city['_id']}
         key={city['_id']}
         imageUrl={city.imageUrl}
-        citiesUrl={this.props.citiesUrl} />
+        citiesViewUrl={this.props.citiesViewUrl} />
     )
   });
   return(

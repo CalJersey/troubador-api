@@ -1,13 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom'
-import Routes from "./Routes.js";
-import './MainStyle.css';
-import Main from "./components/Main.js";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Router, browserHistory } from "react-router";
+import routes from "./Routes.js";
+import './MainStyle.css'
 
 //ReactDOM.render(<Main />, document.getElementById("root"));
 
 ReactDOM.render(
-  <BrowserRouter Routes={Routes}/>,
+  <Router routes={routes} history={browserHistory}/>,
   document.getElementById("root")
-)
+);

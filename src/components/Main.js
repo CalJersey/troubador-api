@@ -15,7 +15,7 @@ class Main extends Component {
     super(props);
     this.state = {
       userId: this.props.params.userId || this.props.route.config.defaultUserId,
-      isAuthenticated: false,
+      isAuthenticated: this.props.route.config.isAuthenticated,
       cityId: this.props.params.id || this.props.route.config.defaultCityId
     };
     //this.setAuthState = this.setAuthState.bind(this);
@@ -60,13 +60,15 @@ class Main extends Component {
           <div className="col-md-3 city-list-menu">
             <CityContainer
               cityId={this.state.cityId}
-              citiesUrl={this.props.route.config.citiesUrl} />
+              citiesViewUrl={this.props.route.config.citiesViewUrl}
+              citiesGetUrl={this.props.route.config.citiesGetUrl} />
             </div>
             <div className="col-md-9">
               <CityInfo
                 cityId={this.state.cityId}
                 userId={this.state.userId}
-                citiesUrl={this.props.route.config.citiesUrl} />
+                citiesViewUrl={this.props.route.config.citiesViewUrl}
+                citiesGetUrl={this.props.route.config.citiesGetUrl} />
 
               <PostBox
                 cityId={this.state.cityId}

@@ -10,7 +10,7 @@ class UserAuth extends Component {
       username: "",
       password: "",
       userId: "",
-      isAuthenticated: false,
+      isAuthenticated: this.props.isAuthenticated,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
