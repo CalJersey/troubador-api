@@ -70,9 +70,6 @@ class CityList extends Component {
       <div className="CityListItemParent">
         {cityNodes}
       </div>
-      <div className="city-list-add">
-        <CityForm onCitySubmit={this.handleSubmit}/>
-      </div>
     </div>
   )}
 }
