@@ -72,7 +72,7 @@ class Main extends Component {
 
               <PostBox
                 cityId={this.state.cityId}
-                postUrl={this.props.route.config.postUrl}
+                postGetUrl={this.props.route.config.postGetUrl}
                 citiesPostUrl={this.props.route.config.citiesPostUrl}
                 userId={this.state.userId} />
               </div>

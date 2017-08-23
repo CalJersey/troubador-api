@@ -82,7 +82,7 @@ class PostBox extends Component {
 
     //this.setState({ data: newPost });
     axios
-      .post(this.props.postUrl,newPost)
+      .post(this.props.postGetUrl,newPost)
       .then(res => {
 
         newPost['_id'] = res.data['_id']
@@ -99,7 +99,7 @@ class PostBox extends Component {
 
   handlePostDelete(id) {
     axios
-      .delete(`${this.props.postUrl}${id}`)
+      .delete(`${this.props.postGetUrl}${id}`)
       .then(res => {
         console.log('Post Deleted');
         let posts = this.state.data.filter(function(post) {
@@ -115,7 +115,7 @@ class PostBox extends Component {
     //sends the post
     $.ajax({
       method: "put",
-      url: `${this.props.postUrl}${id}`,
+      url: `${this.props.postGetUrl}${id}`,
       data: post
     }).then(
       res => {

@@ -20,7 +20,7 @@ var routes = (
   <div>
 
         <Route path="/" component={Main} config={config} />
-      ] <Route path="/cities/:id" component={Main} config={config}/>
+       <Route path="/cities/:id" component={Main} config={config}/>
         <Route path="/signup" component={Signup}  config={config}/>
         <Route path="/login" component={Main}  config={config}/>
         <Route path="/user" component={UserProfile}  config={config}/>
