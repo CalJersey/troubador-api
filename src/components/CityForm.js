@@ -14,12 +14,11 @@ import {
 class CityForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {name: '', imageURL: '', description: ''};
-    this.state = { isOpen: false };
+    this.state = {name: '', imageURL: '', description: '', isOpen: false};
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleNameChange(e) {

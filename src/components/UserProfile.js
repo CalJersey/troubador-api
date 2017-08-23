@@ -5,11 +5,14 @@ import Header from "./Header";
 class UserProfile extends Component {
   render() {
     return (
-      <div>
-        <Header />
+      <div className="container-fluid">
+      <Header
+        isAuthenticated={this.props.route.config.isAuthenticated}
+        userId={this.props.params.userId || this.props.route.config.defaultUserId}
+        loginUrl = {this.props.route.config.loginUrl} />
         <div>
-          <body className="user-page-body">
-    <div classNameName="container">
+
+    <div className="container">
       <div className="row userContainer">
         <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <img className="user-photo" src="https://a0.muscache.com/im/pictures/965c0643-b59f-4d12-8d91-0ff2a55b21dc.jpg?aki_policy=profile_x_medium"/>
@@ -42,7 +45,6 @@ class UserProfile extends Component {
 
     </div>
 
-  </body>
         </div>
       </div>
     );

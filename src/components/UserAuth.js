@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import $ from "jquery-ajax";
-import {Link} from "react-router";
+// import $ from "jquery-ajax";
+// import {Link} from "react-router";
 import {Button, Input} from "react-materialize";
 
 class UserAuth extends Component {
@@ -9,77 +9,87 @@ class UserAuth extends Component {
     this.state = {
       username: "",
       password: "",
-      userId: "",
+      userId: this.props.userId,
       isAuthenticated: this.props.isAuthenticated,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    console.log("constructorUserId=",this.state.userId)
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
-    let username = this.state.username;
-    let password = this.state.password;
-    $.ajax({
-      method: "POST",
-      url: this.props.loginUrl,
-      data: {
-        username: username,
-        password: password
-      }
-    }).then(res => {
-      console.log("res is ", res);
-      this.setState({isAuthenticated: true, userId: res._id});
-      this.props.setAuthState(true,res._id);
-    }, err => {
-      console.log("oops!");
-      console.log(err);
-    });
+    let username = this.state.username.trim();
+    let password = this.state.password.trim();
+
+    if (!username || !password) {
+      return;
+    }
+    this.props.onUserSubmit({ username: username, password: password });
+
   }
-  handleLogout() {
-    this.setState({isAuthenticated: false, userId: ""});
-    this.props.setAuthState(false,"");
-  }
+
   handleUsernameChange(e) {
     this.setState({username: e.target.value});
   }
   handlePasswordChange(e) {
     this.setState({password: e.target.value});
   }
-  getInitialState() {
-    this.props.setAuthState(false,"");
-    return {isAuthenticated: false};
+
+  componentWillUpdate(){
+    this.state.userId= this.props.userId
+    this.state.isAuthenticated= this.props.isAuthenticated
   }
+
   renderLoginForm(){
     if (!this.state.isAuthenticated) {
 
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
-            <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-            <Button type="submit" value="login">Login</Button>
-          </form>
-        </div>
+
+        <form onSubmit={this.handleSubmit}>
+          <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
+          <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+          <Button type="submit" value="login">Login</Button>
+        </form>
+
       )
     } else {
       return (
-        <div>
-          <p>logged in</p>
-          <Button className="logout-button" onClick={this.handleLogout}>
+        <p>logged in
+          <Button className="logout-button" onClick={this.props.handleLogout}>
             Logout
           </Button>
-        </div>
+        </p>
+      )
+    }
+  }
+  renderUserAuthNavLinks(){
+    if (this.props.isAuthenticated){
+      let UserLink = `/user/${this.props.userId}`
+      return (
+        <a className="navLink" id="profile" href={UserLink}>
+          Profile
+        </a>
+      )
+    }
+    else {
+      return (
+        <a className="navLink" id="signup" href="/signup">
+          Sign Up
+        </a>
       )
     }
   }
   render() {
     let loginFormContent = this.renderLoginForm()
+    let userAuthNavLinks = this.renderUserAuthNavLinks()
     return(
-        <div className="UserAuth move-right">
+      <div className="userAuth">
+        <div className="loginForm">
           {loginFormContent}
         </div>
+        {userAuthNavLinks}
+      </div>
 
     )
   }

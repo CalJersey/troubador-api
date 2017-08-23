@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { browserHistory } from "react-router";
 import $ from "jquery-ajax";
 import { Button, Card, Row, Col } from "react-materialize";
+import Header from "./Header";
 
 class SignUp extends Component {
   constructor(props) {
@@ -44,7 +45,13 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <div>
+    <div className="container-fluid">
+
+      <Header
+        isAuthenticated={this.props.route.config.isAuthenticated}
+        userId={this.props.params.userId || this.props.route.config.defaultUserId}
+        loginUrl = {this.props.route.config.loginUrl} />
+      <div className="row">
         <h1>Signup</h1>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -64,6 +71,7 @@ class SignUp extends Component {
           </Button>
         </form>
       </div>
+    </div>
     );
   }
 }

@@ -1,29 +1,26 @@
 import React, { Component } from "react";
-import Header from "./Header";
-import {Link} from "react-router";
-import {browserHistory} from "react-router";
+import Header from "./Header"
+// import {Link} from "react-router";
+// import {browserHistory} from "react-router";
 import CityContainer from "./CityContainer";
 import PageContent from "./PageContent";
 import CityInfo from "./CityInfo";
 import PostBox from "./PostBox";
 import UserAuth from "./UserAuth";
 
-import { Button, Card, Row, Col, Input } from "react-materialize";
+// import { Button, Card, Row, Col, Input } from "react-materialize";
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: this.props.params.userId || this.props.route.config.defaultUserId,
-      isAuthenticated: this.props.route.config.isAuthenticated,
-      cityId: this.props.params.id || this.props.route.config.defaultCityId
-    };
-    this.setAuthState = this.setAuthState.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     userId: ,
+  //     isAuthenticated: ,
+  //     cityId:
+  //   };
+  // }
 
-  setAuthState(isAuth,userId){
-    this.setState({isAuthenticated:isAuth, userId:userId});
-  }
+
 
   renderPageContent() {
     return(
@@ -40,17 +37,11 @@ class Main extends Component {
     }
 
     return (
-      <div className="MainPage container-fluid">
-        <nav>
-          <article>
-            <Header
-              handleSubmit={event => this.handleSubmit}
-              loginUrl={this.props.route.config.loginUrl}
-              setAuthState={this.setAuthState}
-              isAuthenticated={this.state.isAuthenticated}
-              userId = {this.state.userId} />
-          </article>
-        </nav>
+      <div className="container-fluid">
+        <Header
+          isAuthenticated={this.props.route.config.isAuthenticated}
+          userId={this.props.params.userId || this.props.route.config.defaultUserId}
+          loginUrl = {this.props.route.config.loginUrl} />
         <div className="row">
           <div className="col-sm-12">
             {pageContentNode}
@@ -59,14 +50,14 @@ class Main extends Component {
         <div className="row">
           <div className="col-md-3 city-list-menu">
             <CityContainer
-              cityId={this.state.cityId}
+              cityId={this.props.params.id || this.props.route.config.defaultCityId}
               citiesViewUrl={this.props.route.config.citiesViewUrl}
               citiesGetUrl={this.props.route.config.citiesGetUrl} />
             </div>
             <div className="col-md-9">
               <CityInfo
-                cityId={this.state.cityId}
-                userId={this.state.userId}
+                cityId={this.props.params.id || this.props.route.config.defaultCityId}
+                userId={this.props.params.userId || this.props.route.config.defaultUserId}
                 citiesViewUrl={this.props.route.config.citiesViewUrl}
                 citiesGetUrl={this.props.route.config.citiesGetUrl} />
 
@@ -74,7 +65,7 @@ class Main extends Component {
                 cityId={this.state.cityId}
                 postGetUrl={this.props.route.config.postGetUrl}
                 citiesPostUrl={this.props.route.config.citiesPostUrl}
-                userId={this.state.userId} />
+                userId={this.props.params.userId || this.props.route.config.defaultUserId} />
               </div>
             </div>
         </div>

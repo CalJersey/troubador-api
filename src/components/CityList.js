@@ -7,8 +7,7 @@ class CityList extends Component {
   constructor(props) {
     super(props);
     this.state = {data: []};
-    this.handleCityAdd = this.handleCityAdd.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    //this.handleCityAdd = this.handleCityAdd.bind(this);
   }
 
   loadCitiesFromServer(){
@@ -18,40 +17,24 @@ class CityList extends Component {
     })
   }
 
-  handleSubmit(e) {
-    console.log(e);
-    let city = this.state.data;
-    let newCity = city.concat(e);
-    this.setState({data: newCity});
-    console.log(this.props.url);
 
-    fetch(this.props.citiesGetUrl, {
-    method: 'post',
-    body: e})
-    .then(res => {
-      this.setState({ data: res.data });
-    })
-    .catch(err => {
-      console.error("OOPSIES", err);
-    });
-  }
 
-  handleCityAdd(city) {
-    axios.post(this.props.citiesGetUrl, {
-      name: city.name,
-      imageUrl: city.imageUrl,
-      description: city.description
-    })
-    .then(function (response) {
-       console.log(response);
-    })
-   .catch(function (error) {
-     console.log(error);
-   })
-  }
-  componentDidMount() {
-    this.loadCitiesFromServer()
-  }
+  // handleCityAdd(city) {
+  //   axios.post(this.props.citiesGetUrl, {
+  //     name: city.name,
+  //     imageUrl: city.imageUrl,
+  //     description: city.description
+  //   })
+  //   .then(function (response) {
+  //      console.log(response);
+  //   })
+  //  .catch(function (error) {
+  //    console.log(error);
+  //  })
+  // }
+  // componentDidMount() {
+  //   this.loadCitiesFromServer()
+  // }
 
   render(){
     let cityNodes = this.state.data.map(city => {

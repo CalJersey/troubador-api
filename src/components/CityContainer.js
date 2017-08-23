@@ -5,6 +5,29 @@ import CityForm from "./CityForm";
 
 
 class CityContainer extends Component {
+  constructor(){
+    super();
+    this.state = {data: []};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    console.log(e);
+    let city = this.state.data;
+    let newCity = city.concat(e);
+    this.setState({data: newCity});
+    console.log(this.props.url);
+
+    fetch(this.props.citiesGetUrl, {
+    method: 'post',
+    body: e})
+    .then(res => {
+      this.setState({ data: res.data });
+    })
+    .catch(err => {
+      console.error("OOPSIES", err);
+    });
+  }
   render() {
     return (
       <div className="CityContainer">

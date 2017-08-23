@@ -23,13 +23,17 @@ a {
 h1 {
   font-size: 72px;
   margin: auto;
-  padding: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   font-family: 'Supermercado One', cursive;
 }
 
-.login-form {
-  padding: 50px;
+.loginForm {
+  padding: 10px;
   color: black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
 h2 {
@@ -47,6 +51,12 @@ h3 {
   font-size: 36px;
 }
 
+.container-fluid{
+  width: 100%;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
 
 .postContent {
 font-size: 18px;
@@ -78,6 +88,9 @@ img {
   text-align: center;
   color: #f27935;
   height: 140px;
+  width: 100%;
+  margin: 0px;
+  border: 0px;
 }
 
 .image-space {
@@ -85,12 +98,6 @@ img {
   width: 100%;
   text-align: center;
   margin-left: ;
-}
-
-.move-right {
-  float: right;
-  height: 45px;
-  width: auto;
 }
 
 .content-body {
@@ -233,13 +240,23 @@ li {
 .topnav {
   font-size: 20px;
   text-align: left;
-  margin: -10px 0 0 5px;
+  width: 100%;
+  margin: 0px;
+  border: 0px;
 }
 #profile {
   margin-left: 5px;
 }
 #signup {
   margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+#root {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
 }
 
 .splash-login-container {
@@ -269,6 +286,10 @@ li {
   margin-left: 40px;
   width: 25%;
   border-radius: 5px;
+}
+
+#right-topic h3, #middle-topic h3, #left-topic h3 {
+  word-wrap: break-word;
 }
 
 .flex-center {
@@ -326,6 +347,14 @@ li {
 
 }
 
+.userAuth {
+  text-align: left;
+}
+
+a.navLink:hover {
+  color: #f27935;
+}
+
 .ul-city {
   padding: 0px !important;
   border-top: solid #34495e;
@@ -349,4 +378,13 @@ li {
   border: 2px solid #34495e;
   border-radius: 10px;
   margin: 10% 5% 20% 0%;
+}
+
+@media screen and (max-width: 575px) {
+    h1 {
+        padding-top: 100px;
+    }
+    .nav-bar {
+      height: 240px;
+    }
 }
