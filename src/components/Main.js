@@ -18,7 +18,7 @@ class Main extends Component {
       isAuthenticated: this.props.route.config.isAuthenticated,
       cityId: this.props.params.id || this.props.route.config.defaultCityId
     };
-    //this.setAuthState = this.setAuthState.bind(this);
+    this.setAuthState = this.setAuthState.bind(this);
   }
 
   setAuthState(isAuth,userId){
@@ -46,9 +46,9 @@ class Main extends Component {
             <Header
               handleSubmit={event => this.handleSubmit}
               loginUrl={this.props.route.config.loginUrl}
-              setAuthState={this.setAuthState} >
-                <UserAuth />
-            </Header>
+              setAuthState={this.setAuthState}
+              isAuthenticated={this.state.isAuthenticated}
+              userId = {this.state.userId} />
           </article>
         </nav>
         <div className="row">

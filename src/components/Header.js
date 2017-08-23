@@ -8,9 +8,6 @@ import UserAuth from "./UserAuth"
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isAuthenticated: false
-    };
   }
   // authCheck() {
   //   this.state.isAuthenticated = this.props.isAuthenticated;
@@ -29,21 +26,41 @@ class Header extends Component {
   // handlePasswordChange(e) {
   //   this.setState({ password: e.target.value });
   // }
+  renderUserAuthNavLinks(){
+    if (this.props.isAuthenticated){
+      let UserLink = `/user/${this.props.userId}`
+      return (
+        <a id="profile" href={UserLink}>
+          Profile
+        </a>
+      )
+    }
+    else {
+      return (
+        <a id="signup" href="/signup">
+          Sign Up
+        </a>
+      )
+    }
+  }
+
   render() {
-    this.state.isAuthenticated = this.props.isAuthenticated;
-    console.log(this.state.isAuthenticated);
+
+    let userAuthNavLinks = this.renderUserAuthNavLinks();
+
     return (
       <div className="nav-bar">
 
-        <h1>Wayfarer</h1>
-        <div className="topnav" id="myTopnav">
-          <a id="profile" href="/user">
-            Profile
-          </a>
-          <a id="signup" href="/signup">
-            Sign Up
-          </a>
+        <UserAuth
+        userId = {this.props.userId}
+        isAuthenticated = {this.props.isAuthenticated}
+        loginUrl = {this.props.loginUrl}
+        setAuthState={this.props.setAuthState} />
 
+          <h1>Wayfarer</h1>
+
+        <div className="topnav" id="myTopnav">
+          {userAuthNavLinks}
 
         </div>
       </div>

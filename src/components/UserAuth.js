@@ -52,30 +52,24 @@ class UserAuth extends Component {
     return {isAuthenticated: false};
   }
   renderLoginForm(){
-    if (this.state.isAuthenticated === false) {
-      console.log("user is not logged in");
-      return (
+    if (!this.state.isAuthenticated) {
 
-        <div className="UserAuth">
-          <div className="move-right">
+      return (
+        <div>
           <form onSubmit={this.handleSubmit}>
             <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
             <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
             <Button type="submit" value="login">Login</Button>
           </form>
         </div>
-      </div>
-
       )
     } else {
       return (
-        <div className="UserAuth">
+        <div>
           <p>logged in</p>
-          <div className="col">
           <Button className="logout-button" onClick={this.handleLogout}>
             Logout
           </Button>
-          </div>
         </div>
       )
     }
@@ -83,7 +77,7 @@ class UserAuth extends Component {
   render() {
     let loginFormContent = this.renderLoginForm()
     return(
-        <div>
+        <div className="UserAuth move-right">
           {loginFormContent}
         </div>
 

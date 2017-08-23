@@ -87,11 +87,11 @@ img {
   margin-left: ;
 }
 
-  /*.move-right {
+.move-right {
   float: right;
-height: 45px;
+  height: 45px;
   width: auto;
-}*/
+}
 
 .content-body {
   margin-top: 0;
