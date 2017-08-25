@@ -21,7 +21,7 @@ class SignUp extends Component {
     console.log(this.state.username);
     $.ajax({
       method: "POST",
-      url: `http://localhost:3001/signup`,
+      url: `https://city-trekkor.herokuapp.com/signup`,
       data: {
         username: username,
         password: password
