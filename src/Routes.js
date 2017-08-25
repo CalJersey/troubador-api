@@ -14,7 +14,7 @@ let config = {
   loginUrl: 'http://localhost:3001/login/',
   defaultPageContext : "",
   isAuthenticated : false,
-  defaultCityId : '5994aa8f5f5b9e81335aa930',
+  defaultCityId : '599fad8d275cb3ee8a473dbb',
   defaultUserId: 1
 }
 

@@ -34,7 +34,7 @@ db.City.remove({}, function(err, cities) {
       if (err) {
         return console.log(err);
       }
-      console.log('saved ' + savedCity.name);
+      console.log(`saved city= ${savedCity.name}: ID= ${savedCity._id}`);
     });
   });
 });

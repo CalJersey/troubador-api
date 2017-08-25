@@ -17,24 +17,9 @@ class CityList extends Component {
     })
   }
 
-
-
-  // handleCityAdd(city) {
-  //   axios.post(this.props.citiesGetUrl, {
-  //     name: city.name,
-  //     imageUrl: city.imageUrl,
-  //     description: city.description
-  //   })
-  //   .then(function (response) {
-  //      console.log(response);
-  //   })
-  //  .catch(function (error) {
-  //    console.log(error);
-  //  })
-  // }
-  // componentDidMount() {
-  //   this.loadCitiesFromServer()
-  // }
+  componentDidMount() {
+    this.loadCitiesFromServer()
+  }
 
   render(){
     let cityNodes = this.state.data.map(city => {
