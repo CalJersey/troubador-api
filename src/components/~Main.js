@@ -30,7 +30,7 @@ class Main extends Component {
     let password = this.state.password;
     $.ajax({
       method: "POST",
-      url: `http://localhost:3001/login`,
+      url: `https://city-trekkor.herokuapp.com/signup`,
       data: {
         username: username,
         password: password
