@@ -30,7 +30,7 @@ class Main extends Component {
     let password = this.state.password;
     $.ajax({
       method: "POST",
-      url: `http://localhost:3001/login`,
+      url: `https://troubador-api.herokuapp.com/api/login`,
       data: {
         username: username,
         password: password
@@ -110,8 +110,10 @@ class Main extends Component {
               <div className="col-md-9">
                 <CityInfo />
                 <PostBox
-                  postUrl={"http://localhost:3001/api/posts/"}
-                  citiesPostUrl={"http://localhost:3001/api/posts/cities/"}
+                  postUrl={"https://troubador-api.herokuapp.com/api/posts"}
+                  citiesPostUrl={
+                    "hhttps://troubador-api.herokuapp.com/api/cities"
+                  }
                   defaultCityId={1}
                   cityId={postCityId}
                 />
@@ -124,7 +126,6 @@ class Main extends Component {
       console.log("user is logged in");
       return (
         <div>
-
           <div className="MainPage">
             <nav>
               <article>
@@ -153,15 +154,16 @@ class Main extends Component {
                 <div className="col-md-10">
                   <CityInfo />
                   <PostBox
-                    postUrl={"http://localhost:3001/api/posts/"}
-                    citiesPostUrl={"http://localhost:3001/api/posts/cities/"}
+                    postUrl={"hhttps://troubador-api.herokuapp.com/api/posts"}
+                    citiesPostUrl={
+                      "https://troubador-api.herokuapp.com/api/cities"
+                    }
                     defaultCityId={1}
                     cityId={postCityId}
                   />
                 </div>
               </div>
             </article>
-
           </div>
 
           <div classNamer="col" />
