@@ -10,6 +10,8 @@ var express = require('express'),
   controllers = require('./controllers'),
   localStrategy = require('passport-local').Strategy;
 
+mongoose.connect(process.env.MONGOLAB_URI
+
 //create instances
 var app = express(),
   router = express.Router();
