@@ -21,7 +21,7 @@ class SignUp extends Component {
     console.log(this.state.username);
     $.ajax({
       method: "POST",
-      url: `/signup`,
+      url: `https://troubador-api.herokuapp.com/api/users`,
       data: {
         username: username,
         password: password
