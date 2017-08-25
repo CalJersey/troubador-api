@@ -17,13 +17,14 @@ let config = {
   defaultCityId : '5994aa8f5f5b9e81335aa930',
   defaultUserId: 1
 }
-var routes = (
+
+let routes = (
   <div>
-        <Route path="/" component={Splash} config={config} />
-        <Route path="/signup" component={Signup}  config={config}/>
-        <Route path="/cities/:id" component={Main} config={config}/>
-        <Route path="/user/:id" component={UserProfile}  config={config}/>
-        <Route path="*" component={Main} config={config} />
+    <Route path="/" component={Splash} config={config} />
+    <Route path="/signup" component={Signup} config={config}/>
+    <Route path="/cities/:id" component={Main} config={config}/>
+    <Route path="/user/:id" component={UserProfile}  config={config}/>
+    <Route path="*" component={Main} config={config} />
   </div>
 );
 

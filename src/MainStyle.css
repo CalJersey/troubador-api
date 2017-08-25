@@ -304,6 +304,9 @@ li {
   left: 5%;
 }
 
+div.fullHeight {
+  height: 100%; width:100%; float:left;
+}
 
 .modal-title {
   font-size: 36px;
