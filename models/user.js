@@ -1,14 +1,10 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
-passportLocalMongoose = require("passport-local-mongoose");
+let passportLocalMongoose = require("passport-local-mongoose");
 
 let UserSchema = new Schema({
   username: String,
   password: String,
-  hometown: {
-    type: Schema.Types.ObjectId,
-    ref: "City"
-  },
   image: String
 });
 

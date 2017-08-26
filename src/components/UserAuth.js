@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 // import $ from "jquery-ajax";
 // import {Link} from "react-router";
-import {Button, Input} from "react-materialize";
 
 class UserAuth extends Component {
   constructor(props) {
@@ -12,11 +11,11 @@ class UserAuth extends Component {
       userId: this.props.userId,
       isAuthenticated: this.props.isAuthenticated,
     };
-    console.log("constructorUserId=",this.state.userId)
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(e) {
     e.preventDefault();
     let username = this.state.username.trim();
@@ -47,19 +46,16 @@ class UserAuth extends Component {
       return (
 
         <form onSubmit={this.handleSubmit}>
-          <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
-          <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-          <Button type="submit" value="login">Login</Button>
+          <input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange} /><br />
+          <input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/><br />
+          <button className="btn btn-primary" type="submit" value="login">Login</button>
         </form>
 
       )
     } else {
       return (
-        <p>logged in
-          <Button className="logout-button" onClick={this.props.handleLogout}>
-            Logout
-          </Button>
-        </p>
+        <a href="#" className="navLink" onClick={this.props.handleLogout}>Log Out</a>
+
       )
     }
   }
@@ -89,6 +85,9 @@ class UserAuth extends Component {
           {loginFormContent}
         </div>
         {userAuthNavLinks}
+        <a className="navLink" href="/cities">
+          Home
+        </a>
       </div>
 
     )

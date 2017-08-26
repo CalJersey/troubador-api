@@ -137,12 +137,22 @@ img {
 }
 
 .CityContainer {
-  padding: 20px;
+  padding: 10px;
+  margin-top: 20px;
+
+}
+.add-city-bttn{
+  margin-bottom: -5px;
+}
+.cityList {
+  border-radius: 5px;
   background-color: #fff;
+  padding:7px;
+  padding-top: 4px;
   margin-top: 30px;
 }
 
-div.CityListItem{width:100%; height: 150px; background-size:cover;}
+div.CityListItem{width:100%; height: 150px; background-size:cover; border-radius: 5px; }
 div.cityName{width:100%; height: 150px; background-color: transparent;}
 
 li {
@@ -150,7 +160,7 @@ li {
 }
 
 .city-add {
-  margin-top: 30px;
+  background-color: #bdc3c7;
   margin-left: 20%;
   text-align: right;
 }
@@ -198,13 +208,16 @@ li {
   border: none;
 }
 
+.splash-main{
+  height: 100%;
+}
+
 .image-splash {
-  padding: 450px;
-  margin-top: -22%;
-  display: inline-block;
-  z-index: -1;
+  padding: 40px;
   height: 100%;
   width: 100%;
+  vertical-align: bottom;
+  min-height: 600px;
   background-size: cover;
   background-position: top;
   background-image: url("https://images.unsplash.com/photo-1487581424120-18f3611a63e6?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1033&amp;q=80&amp;cs=tinysrgb&amp;crop=");
@@ -227,10 +240,20 @@ li {
 .list-item {
   margin: 20px;
   padding: 10px;
+  background-color: #fff;
+  width: 75%;
+}
+
+
+.ListItemContainer{
+  background-color: #fff;
+}
+.postFormBox{
+  background-color: #bdc3c7;
 }
 
 .PostList {
-  margin: ;
+  width: 75%;
 }
 
 .post-list-space {
@@ -254,9 +277,14 @@ li {
 
 #root {
   width: 100%;
+  height: 100%;
   padding: 0px;
   margin: 0px;
   border: 0px;
+}
+
+div.splash {
+  height: 100%;
 }
 
 .splash-login-container {
@@ -265,27 +293,27 @@ li {
   margin: auto;
 }
 
-#left-topic {
+#left-topic , #middle-topic, #right-topic {
   padding: 3px;
   background-color: white;
   width: 25%;
   border-radius: 5px;
+  min-height: 250px;
+  min-width: 200px;
+  max-width: 400px;
+  max-height: 450px;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-top: 20%;
+  margin-right: 30px;
+  margin-left: 30px;
+  font-weight: 700
 }
 
-#middle-topic {
-  padding: 3px;
-  margin: 0px 5px 5px 40px;
-  background-color: white;
-  width: 25%;
-  border-radius: 5px;
-}
-
-#right-topic {
-  padding: 3px;
-  background-color: white;
-  margin-left: 40px;
-  width: 25%;
-  border-radius: 5px;
+div.topicHead{
+  background-color: #34495e;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 #right-topic h3, #middle-topic h3, #left-topic h3 {
@@ -353,7 +381,10 @@ div.fullHeight {
 .userAuth {
   text-align: left;
 }
-
+a.navLink {
+  margin:7px;
+  font-weight: 700;
+}
 a.navLink:hover {
   color: #f27935;
 }

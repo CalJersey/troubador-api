@@ -124,24 +124,7 @@ class Post extends Component {
     let postContent = this.renderPost();
     return (
       <div className="post">
-
-
         {postContent}
-
-        <div className="modal-window">
-          <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
-            <ModalHeader>
-              <ModalClose onClick={this.hideModal} />
-              <ModalTitle>Are you sure??</ModalTitle>
-            </ModalHeader>
-            <ModalBody>This data cannot be recovered.</ModalBody>
-            <ModalFooter>
-              <form>
-                <button className="btn btn-default">Yes</button>
-              </form>
-            </ModalFooter>
-          </Modal>
-        </div>
       </div>
     );
   }

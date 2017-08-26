@@ -20,9 +20,9 @@ class UserAuthContainer extends Component {
     let username = e.username;
     let password = e.password;
     $.ajax({
-      method: "POST",
-      url: this.props.loginUrl,
-      data: {
+        method: "POST",
+        url: this.props.loginUrl,
+        data: {
         username: username,
         password: password
       }

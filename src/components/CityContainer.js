@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import CityList from './CityList';
 import CityInfo from "./CityInfo";
 import CityForm from "./CityForm";
@@ -9,35 +10,51 @@ class CityContainer extends Component {
     super();
     this.state = {data: []};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loadCitiesFromServer = this.loadCitiesFromServer.bind(this);
+  }
+
+  loadCitiesFromServer(){
+    axios.get(this.props.citiesGetUrl)
+    .then(res => {
+      this.setState({data: res.data})
+    })
   }
 
   handleSubmit(e) {
-    console.log(e);
-    let city = this.state.data;
-    let newCity = city.concat(e);
-    this.setState({data: newCity});
-    console.log(this.props.url);
+    // console.log(e);
+    let city = this.state.data
+    let newCity = e
 
-    fetch(this.props.citiesGetUrl, {
-    method: 'post',
-    body: e})
-    .then(res => {
-      this.setState({ data: res.data });
+    axios
+      .post(this.props.citiesGetUrl,newCity)
+      .then(res => {
+      // this.setState({ data: res.data });'
+      newCity['_id'] = res.data['_id']
+      city.shift(newCity)
+      this.loadCitiesFromServer()
     })
     .catch(err => {
       console.error("OOPSIES", err);
     });
   }
+
+  componentDidMount() {
+    this.loadCitiesFromServer()
+  }
+
   render() {
     return (
       <div className="CityContainer">
         <div className="city-add">
           <CityForm onCitySubmit={this.handleSubmit}/>
         </div>
-        <CityList
-          cityId={this.props.cityId}
-          citiesViewUrl={this.props.citiesViewUrl}
-          citiesGetUrl={this.props.citiesGetUrl}/>
+        <div className="cityList">
+          <CityList
+            cityId={this.props.cityId}
+            citiesViewUrl={this.props.citiesViewUrl}
+            citiesGetUrl={this.props.citiesGetUrl}
+            data={this.state.data} />
+          </div>
       </div>
     );
   }

@@ -15,56 +15,9 @@ class PostBox extends Component {
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
     this.handlePostUpdate = this.handlePostUpdate.bind(this);
-
-    // switch (this.props.postObjType) {
-    //   case 'city':
-    //     this.setState({postObjType:this.props.postObjType})
-    //     if (this.props.postCityId){
-    //       this.setState({postCityId:this.props.postCityId})
-    //     } else {
-    //       this.setState({postCityId:0})
-    //     }
-    //     break;
-    //   case 'user':
-    //     this.setState({postObjType:this.props.postObjType})
-    //     if (this.props.postUserId){
-    //       this.setState({postCityId:this.props.postUserId})
-    //     } else {
-    //       this.setState({postUserId:0})
-    //     }
-    //     break;
-    //   default:
-    //     this.setState({postObjType:''})
-    //     this.setState({postCityId:0})
-    //     this.setState({postUserId:0})
-    // }
   }
 
   loadPostsFromServer() {
-      // let posts_list = [
-      //   {
-      //     _id:1,
-      //     title: 'This place rocks!',
-      //     text: 'omg my favorite place',
-      //     user: {_id:23,username:'Jed'},
-      //     city: {_id:45,name:'Jedcity'}
-      //   },
-      //   {
-      //     _id:2,
-      //     title: 'Tattooed offal heirloom lumbersexual',
-      //     text: 'Hexagon mumblecore tilde bushwick.',
-      //     user: {_id:34,username:'mami'},
-      //     city: {_id:33,name:'Miami'}
-      //   },
-      //   {
-      //     _id:3,
-      //     title: 'Cold pressed health goth',
-      //     text: 'Shoreditch PBR&B celiac, ethical jean shorts 90s neutra slow-carb.',
-      //     user: {_id:89,username:'moron'},
-      //     city: {_id:78,name:'jerksVille'}
-      //   }
-      // ];
-
     axios.get(`${this.props.citiesPostUrl}${this.props.cityId}`).then(res => {
       console.log(res.data)
       this.setState({ data: res.data.posts });
@@ -132,21 +85,21 @@ class PostBox extends Component {
   render() {
     return (
       <div className="PostBox">
-          <h3>What people are saying</h3>
-          <div className="row">
-            <div className="col-md-12">
-          <PostForm onPostSubmit={ this.handlePostSubmit }/>
+        <h3>What people are saying</h3>
+        <div className="row ">
+          <div className="col-md-12">
+            <PostForm onPostSubmit={ this.handlePostSubmit }/>
           </div>
-            <div className="col-md-12 list-item">
-          <PostList
-            loadPostsFromServer={this.loadPostsFromServer}
-            onPostDelete={this.handlePostDelete}
-            onPostUpdate={this.handlePostUpdate}
-            data={this.state.data}
-          />
-            </div>
+          <div className="col-md-12 list-item">
+            <PostList
+              loadPostsFromServer={this.loadPostsFromServer}
+              onPostDelete={this.handlePostDelete}
+              onPostUpdate={this.handlePostUpdate}
+              data={this.state.data}
+            />
+          </div>
         </div>
-     </div>
+      </div>
 
     );
   }

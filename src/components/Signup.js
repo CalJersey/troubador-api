@@ -16,13 +16,12 @@ class SignUp extends Component {
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
   }
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     let username = this.state.username;
     let password = this.state.password;
-    console.log(this.state.username);
     $.ajax({
       method: "POST",
-      url: `http://localhost:3001/signup`,
+      url: this.props.route.config.signupUrl,
       data: {
         username: username,
         password: password
@@ -30,7 +29,7 @@ class SignUp extends Component {
     }).then(
       res => {
         console.log("res is ", res);
-        browserHistory.push("/");
+        browserHistory.push("/login");
       },
       err => {
         console.log(err);
@@ -46,10 +45,9 @@ class SignUp extends Component {
   render() {
     return (
     <div className="container-fluid">
-
       <Header
         isAuthenticated={this.props.route.config.isAuthenticated}
-        userId={this.props.params.userId || this.props.route.config.defaultUserId}
+        userId={this.state.userId}
         loginUrl = {this.props.route.config.loginUrl} />
       <div className="row">
         <h1>Signup</h1>

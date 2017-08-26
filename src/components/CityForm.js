@@ -9,8 +9,6 @@ import {
 } from 'react-modal-bootstrap';
 
 
-
-
 class CityForm extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +16,9 @@ class CityForm extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleNameChange(e) {
@@ -48,14 +48,14 @@ class CityForm extends Component {
   }
 
   //opens our modal
-  openModal = () => {
+  openModal() {
     this.setState({
       isOpen: true
     });
   };
 
   //closes our modal
-  hideModal = () => {
+  hideModal(){
     this.setState({
       isOpen: false
     });
