@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Router, browserHistory } from "react-router";
-import routes from "./Routes.js";
-import './MainStyle.css'
+import routes from "./routes.js";
+
 
 //ReactDOM.render(<Main />, document.getElementById("root"));
 

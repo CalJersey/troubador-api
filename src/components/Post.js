@@ -15,16 +15,18 @@ class Post extends Component {
     super(props);
     this.state = {
       toBeUpdated: false,
-      title: '',
-      text: '',
+      title: this.props.title,
+      text: this.props.text,
       user: '',
-      editMode: false
+      editMode: false,
+      id: this.props.id
     };
     this.deletePost = this.deletePost.bind(this);
     this.updatePost = this.updatePost.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handlePostUpdate = this.handlePostUpdate.bind(this);
+    this.editModeSwap = this.editModeSwap.bind(this);
   }
   updatePost(e) {
     e.preventDefault();
@@ -33,7 +35,7 @@ class Post extends Component {
   }
   handlePostUpdate(e) {
     e.preventDefault();
-    let id = this.props.id;
+    let id = this.state.id;
     //if title or text changed, set it. if not, leave null and our PUT request
     //will ignore it.
     let title = this.state.title ? this.state.title : null;
@@ -46,16 +48,17 @@ class Post extends Component {
     this.props.onPostUpdate(id, post);
     this.setState({
       toBeUpdated: !this.state.toBeUpdated,
-      title: "",
-      text: "",
       editMode: !this.state.editMode
     });
   }
   deletePost(e) {
     e.preventDefault();
-    let id = this.props.id;
+    let id = this.state.id;
     this.props.onPostDelete(id);
     console.log("oops deleted");
+    this.setState(
+      {toBeUpdated: true,
+        editMode: false})
   }
   handleTextChange(e) {
     this.setState({ text: e.target.value });
@@ -83,10 +86,11 @@ class Post extends Component {
     if (!this.state.editMode){
       return(
         <div className="viewPost">
+
           <hr />
-          <div className="postTitle">{this.props.title}</div>
+          <div className="postTitle">{this.state.title}</div>
           <hr />
-          <div className="postContent">{this.props.text}</div>
+          <div className="postContent">{this.state.text}</div>
           <div className='post-footer'>
             <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete</button>
             <button className='btn btn-primary edit-post' onClick={this.editModeSwap}>Edit Post</button>
@@ -96,18 +100,22 @@ class Post extends Component {
       )
     } else {
       return(
-
-        <div className="editPostForm">
+        <div className="viewPost">
           <form action="#" onSubmit={this.handlePostUpdate} method="PUT" className="post-update-form">
-            <input type="text" name="title" value={this.props.title} size={this.props.title.length} onChange={this.handleTitleChange} required />
-            <input type="text" name="text" size={this.props.text.length} value={this.props.text} onChange={this.handleTextChange} required />
-            <div className='post-footer'>
-              <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
-              <button className='btn btn-primary save-post'>Save Changes</button>
-            </div>
-          </form>
-
-        </div>
+          <hr />
+          <div className="postTitle">
+            <input type="text" name="title" value={this.state.title} size={this.state.title.length} onChange={this.handleTitleChange} required />
+          </div>
+          <hr />
+          <div className="postContent">
+            <input type="text" name="text" size={this.state.text.length} value={this.state.text} onChange={this.handleTextChange} required />
+          </div>
+          <div className='post-footer'>
+            <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
+            <button className='btn btn-primary save-post'>Save Changes</button>
+          </div>
+        </form>
+      </div>
       )
     }
   }
@@ -116,24 +124,7 @@ class Post extends Component {
     let postContent = this.renderPost();
     return (
       <div className="post">
-
-
         {postContent}
-
-        <div className="modal-window">
-          <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
-            <ModalHeader>
-              <ModalClose onClick={this.hideModal} />
-              <ModalTitle>Are you sure??</ModalTitle>
-            </ModalHeader>
-            <ModalBody>This data cannot be recovered.</ModalBody>
-            <ModalFooter>
-              <form>
-                <button className="btn btn-default">Yes</button>
-              </form>
-            </ModalFooter>
-          </Modal>
-        </div>
       </div>
     );
   }

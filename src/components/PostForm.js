@@ -12,8 +12,7 @@ import {
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', text: '' };
-    this.state = { isOpen: false };
+    this.state = { title: '', text: '', isOpen: false };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,25 +56,25 @@ class PostForm extends Component {
     return (
       <div className="modal-window">
         <button className="btn btn-primary add-post-button" onClick={this.openModal}>
-          Add New Comment
+          Say Something!
         </button>
 
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
           <ModalHeader>
             <ModalClose onClick={this.hideModal} />
-            <ModalTitle>Add a new Destination!</ModalTitle>
+            <ModalTitle>Say Something!</ModalTitle>
           </ModalHeader>
           <ModalBody>
             <form>
               <input
                 type="text"
-                placeholder="Name of location..."
+                placeholder="Head Line"
                 value={this.state.title}
                 onChange={this.handleTitleChange}
               />
               <input
                 type="text"
-                placeholder="What you like about it..."
+                placeholder="What you have to say..."
                 value={this.state.text}
                 onChange={this.handleTextChange}
               />
