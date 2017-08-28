@@ -30,7 +30,7 @@ class Main extends Component {
     let password = this.state.password;
     $.ajax({
       method: "POST",
-      url: `http://localhost:3001/login`,
+      url: `https://troubador-api.herokuapp.com/api/login`,
       data: {
         username: username,
         password: password
@@ -110,8 +110,10 @@ class Main extends Component {
               <div className="col-sm-8">
                 <CityInfo />
                 <PostBox
-                  postUrl={"http://localhost:3001/api/posts/"}
-                  citiesPostUrl={"http://localhost:3001/api/posts/cities/"}
+                  postUrl={"https://troubador-api.herokuapp.com/api/posts"}
+                  citiesPostUrl={
+                    "https://troubador-api.herokuapp.com/api/cities"
+                  }
                   defaultCityId={1}
                   cityId={postCityId}
                 />
