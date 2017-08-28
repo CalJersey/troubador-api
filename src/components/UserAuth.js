@@ -84,10 +84,12 @@ class UserAuth extends Component {
         <div className="loginForm">
           {loginFormContent}
         </div>
-        {userAuthNavLinks}
-        <a className="navLink" href="/cities">
-          Home
-        </a>
+        <div className="navLinks">
+          {userAuthNavLinks}
+          <a href="/cities">
+            Home
+          </a>
+        </div>
       </div>
 
     )

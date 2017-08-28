@@ -1,6 +1,7 @@
 let db = require('../models');
 let User = db.User;
 let passport = require('passport')
+let postRegUrl = process.env.POST_LOGIN_URI || "http://localhost:3000"
 
 //all
 function index(req,res) {
@@ -40,8 +41,10 @@ function add(req, res) {
     new User({ username: req.body.username }),
     req.body.password,
     function(err, newUser) {
+      if (err) return res.status(500).json({error:err.message});
       passport.authenticate('local')(req, res, function() {
-        res.redirect(`/profile/${newUser['_id']}?userAdded=1`);
+        console.log('user added')
+        res.json({userId:newUser['_id']})
       });
     }
   );

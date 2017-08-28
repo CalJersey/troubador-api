@@ -44,17 +44,14 @@ class CityContainer extends Component {
 
   render() {
     return (
-      <div className="CityContainer">
-        <div className="city-add">
-          <CityForm onCitySubmit={this.handleSubmit}/>
-        </div>
-        <div className="cityList">
-          <CityList
-            cityId={this.props.cityId}
-            citiesViewUrl={this.props.citiesViewUrl}
-            citiesGetUrl={this.props.citiesGetUrl}
-            data={this.state.data} />
-          </div>
+      <div className="cityContainer">
+        <CityForm onCitySubmit={this.handleSubmit}/>
+
+        <CityList
+          cityId={this.props.cityId}
+          citiesViewUrl={this.props.citiesViewUrl}
+          citiesGetUrl={this.props.citiesGetUrl}
+          data={this.state.data} />
       </div>
     );
   }

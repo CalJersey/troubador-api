@@ -14,6 +14,7 @@ class UserAuthContainer extends Component {
     // this.setAuthState = this.setAuthState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.setAuthState = this.setAuthState.bind(this);
   }
 
   handleSubmit(e) {

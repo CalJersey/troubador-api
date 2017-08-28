@@ -55,7 +55,7 @@ class PostForm extends Component {
   render() {
     return (
       <div className="modal-window">
-        <button className="btn btn-primary add-post-button" onClick={this.openModal}>
+        <button className="btn btn-primary" onClick={this.openModal}>
           Say Something!
         </button>
 

@@ -15,7 +15,9 @@ class Main extends Component {
     super(props);
     this.state={
       userId:this.props.params.uId || this.props.route.config.defaultUserId,
-      cityId:this.props.params.cid || this.props.route.config.defaultCityId
+      cityId:this.props.params.cid || this.props.route.config.defaultCityId,
+      pageContext: this.props.route.config.pageContext,
+      PageDisplayMessage: this.props.params.PageDisplayMessage,
     }
 
   }
@@ -23,7 +25,9 @@ class Main extends Component {
   renderPageContent() {
     return(
       <div className="PageContent">
-        <PageContent pageContext={this.props.route.config.pageContext} />
+        <PageContent
+          pageContext={this.state.pageContext}
+          PageDisplayMessage={this.state.PageDisplayMessage}/>
       </div>
     )
   }
@@ -32,7 +36,7 @@ render() {
   console.log("state=",this.state)
 
   let pageContentNode = null;
-  if (this.props.route.config.pageContext){
+  if (this.state.pageContext || this.state.PageDisplayMessage ){
     pageContentNode = this.renderPageContent();
   }
   return (
@@ -41,11 +45,10 @@ render() {
         isAuthenticated={this.props.route.config.isAuthenticated}
         userId={this.state.userId}
         loginUrl = {this.props.route.config.loginUrl} />
-      <div className="row">
-        <div className="col-sm-12">
-          {pageContentNode}
-        </div>
-      </div>
+
+      <!-- //content below heder and above main content (individual header/messages) -->
+      {pageContentNode}
+
       <div className="row">
         <div className="col-md-3 city-list-menu">
           <CityContainer
@@ -53,7 +56,7 @@ render() {
             citiesViewUrl={this.props.route.config.citiesViewUrl}
             citiesGetUrl={this.props.route.config.citiesGetUrl} />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 main-content">
             <CityInfo
               cityId={this.state.cityId}
               userId={this.state.userId}

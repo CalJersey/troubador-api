@@ -64,8 +64,8 @@ class CityForm extends Component {
   render() {
     return (
 
-      <div className="modal-window">
-        <button className='btn btn-primary add-city-bttn' onClick={this.openModal}>
+      <div>
+        <button className='btn btn-primary' onClick={this.openModal}>
           Add New City
         </button>
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
@@ -82,7 +82,7 @@ class CityForm extends Component {
                   onChange={ this.handleNameChange } />
                 <input
                   type='text'
-                  placeholder='Image link...'
+                  placeholder='Image URL...'
                   value={ this.state.imageURL }
                   onChange={ this.handleImageChange } />
                 <br />

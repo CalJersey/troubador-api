@@ -1,11 +1,40 @@
 import React, { Component } from "react";
 
 class PageContent extends Component {
-  render() {
-    return (
-      <div className="PageContent">
-        <h2></h2>
+
+  renderpageContent(){
+    let displayMessageNode = null;
+    if (this.state.pageDisplayMessage){
+      displayMessageNode = this.pageDisplayMessage();
+    }
+    return(
+      <div className="pageContent">
+        {this.props.pageContext}
+        {displayMessageNode}
       </div>
+    )
+  }
+
+  renderPageDisplayMessage(){
+    return(
+      <div className="displayMessageNode">
+        {this.props.displayMessageNode}
+      </div>
+    )
+  }
+
+  render() {
+    let pageContentNode = null;
+    let displayMessageNode = null;
+    if (this.state.pageContext){
+      pageContentNode = this.renderpageContent();
+    } else {
+      if (this.state.pageDisplayMessage){
+        pageContentNode = this.pageDisplayMessage();
+      }
+    }
+    return (
+      {pageContentNode}
     );
   }
 }

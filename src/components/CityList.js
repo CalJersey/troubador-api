@@ -17,10 +17,8 @@ class CityList extends Component {
     )
   });
   return(
-    <div className="CityList">
-      <div className="CityListItemParent">
-        {cityNodes}
-      </div>
+    <div className="cityList">
+      {cityNodes}
     </div>
   )}
 }

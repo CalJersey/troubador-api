@@ -10,7 +10,7 @@ class CityListItem extends Component {
 
   return (
     <a href={`${this.props.citiesViewUrl}${this.props.id}`}>
-      <div className="CityListItem" style={divImage}>
+      <div className="cityListItem" style={divImage}>
         <h3 className="cityName">{this.props.name}</h3>
       </div>
     </a>
