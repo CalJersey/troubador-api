@@ -16,6 +16,9 @@ let express = require('express'),
   app = express(),
   router = express.Router()
 
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Wayfarer');
+
+  
   //config API to use bodyParser and look for JSON in req.body
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
