@@ -6,14 +6,14 @@ import Splash from "./components/Splash";
 import UserProfile from "./components/UserProfile";
 
 let config = {
-  postGetUrl : 'http://localhost:3001/api/posts/',
-  citiesPostUrl : 'http://localhost:3001/api/posts/cities/',
-  citiesGetUrl : 'http://localhost:3001/api/cities/',
+  postGetUrl : 'https://troubador-api.herokuapp.com/api/posts/',
+  citiesPostUrl : 'https://troubador-api.herokuapp.com/posts/cities/',
+  citiesGetUrl : 'https://troubador-api.herokuapp.com/cities/',
   citiesViewUrl: '/cities/',
   postViewUrl: '/posts/',
-  loginUrl: 'http://localhost:3001/api/login/',
-  logoutUrl: 'http://localhost:3001/api/logout/',
-  signupUrl:'http://localhost:3001/api/signup',
+  loginUrl: 'https://troubador-api.herokuapp.com/api/login/',
+  logoutUrl: 'https://troubador-api.herokuapp.com/logout/',
+  signupUrl:'https://troubador-api.herokuapp.com/signup',
   defaultPageContext : "",
   isAuthenticated : false,
   defaultCityId : '599fad8d275cb3ee8a473dbb',
