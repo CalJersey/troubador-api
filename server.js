@@ -46,11 +46,11 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
   res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
   );
   //Remove caching
-  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader("Cache-Control", "no-cache");
   next();
 });
 
@@ -58,8 +58,8 @@ app.use(function (req, res, next) {
 app.use('/api', router);
 
 //set route path and init API
-router.get('/', function(req, res) {
-  res.json({ message: 'API Initialized!' });
+router.get("/", function(req, res) {
+  res.json({ message: "API Initialized!" });
 });
 
 /////////////
@@ -164,7 +164,7 @@ router.get('/posts', function(req, res) {
 router.get('/posts/:id', function(req, res) {
   Post
     .findById(req.params.id)
-    .populate('_user _city')
+    .populate("_user _city")
     .exec(function(err, post) {
       if (err) return res.status(500).json({error:err.message});
       res.json(post);
@@ -222,7 +222,7 @@ router.delete('/posts/:id', function(req, res) {
 
 
 //start server
-var port = process.env.API_PORT || 3001;
+var port = process.env.PORT || 3001;
 app.listen(port, function() {
   console.log(`api running on port ${port}`);
 });
