@@ -65,7 +65,7 @@ class CityForm extends Component {
     return (
 
       <div>
-        <button className='btn btn-primary' onClick={this.openModal}>
+        <button className='btn btn-primary btn-city-add' onClick={this.openModal}>
           Add New City
         </button>
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>

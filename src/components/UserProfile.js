@@ -9,13 +9,13 @@ class UserProfile extends Component {
       <Header
         isAuthenticated={this.props.route.config.isAuthenticated}
         userId={this.props.params.userId || this.props.route.config.defaultUserId}
-        loginUrl = {this.props.route.config.loginUrl} />
+        loginUrl={this.props.route.config.loginUrl} />
         <div>
 
     <div className="container">
       <div className="row userContainer">
         <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <img className="user-photo" src="https://a0.muscache.com/im/pictures/965c0643-b59f-4d12-8d91-0ff2a55b21dc.jpg?aki_policy=profile_x_medium"/>
+            <img className="user-photo" alt="user" src="https://a0.muscache.com/im/pictures/965c0643-b59f-4d12-8d91-0ff2a55b21dc.jpg?aki_policy=profile_x_medium"/>
         </div>
         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
           <h2 className="katherine">Katherine Mongod</h2>

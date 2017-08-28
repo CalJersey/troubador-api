@@ -7,19 +7,19 @@ import UserAuth from "./UserAuth";
 class UserAuthContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state={
       userId: this.props.userId,
       isAuthenticated: this.props.isAuthenticated,
     }
-    // this.setAuthState = this.setAuthState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-    this.setAuthState = this.setAuthState.bind(this);
+    // this.setAuthState=this.setAuthState.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleLogout=this.handleLogout.bind(this);
+    this.setAuthState=this.setAuthState.bind(this);
   }
 
   handleSubmit(e) {
-    let username = e.username;
-    let password = e.password;
+    let username=e.username;
+    let password=e.password;
     $.ajax({
         method: "POST",
         url: this.props.loginUrl,
@@ -52,12 +52,12 @@ class UserAuthContainer extends Component {
     return(
 
       <UserAuth
-        userId = {this.state.userId}
-        isAuthenticated = {this.state.isAuthenticated}
-        loginUrl = {this.props.loginUrl}
+        userId={this.state.userId}
+        isAuthenticated={this.state.isAuthenticated}
+        loginUrl={this.props.loginUrl}
         setAuthState={this.setAuthState}
-        onUserSubmit = {this.handleSubmit}
-        handleLogout = {this.handleLogout} />
+        onUserSubmit={this.handleSubmit}
+        handleLogout={this.handleLogout} />
     )
   }
 }

@@ -59,22 +59,37 @@ h3 {
   padding: 0px;
 }
 
-.postContent {
-font-size: 18px;
-
+.postFormBox{
+  background-color: #bdc3c7;
 }
 
+.PostList {
+  width: 75%;
+  background-color: #fff;
+}
+
+.post-list-space {
+  padding: 5px;
+}
+.viewPost{
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.postContent {
+font-size: 18px;
+text-align: left;
+
+}
 .postTitle {
   font-size: 26px;
   color: #f27935;
 }
-
-.viewPost {
-  padding: 2%;
-  background-color: ;
-}
-
 .post-text {
+  background-color: white;
+  font-size: 20px;
   background: transparent;
 }
 
@@ -101,15 +116,21 @@ img {
   margin-left: ;
 }
 
+.image-space img {
+  width:75%;
+  height:75%;
+}
 .content-body {
   margin-top: 0;
 }
 
-.PostBox {
-  text-align: left;
-  margin-left: 15%;
+.postBox {
+  display: inline-block;
+  border-radius: 10px;
+  margin: 0 auto;
+  width:75%;
+  margin-top: 20px;
 }
-
 /*.city-main {
   text-align: left;
   background-color: white;
@@ -139,7 +160,7 @@ img {
 
 .cityContainer {
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 45px;
 }
 
 .cityList {
@@ -177,7 +198,17 @@ li {
   border: #6b7a8f;
   margin-bottom: -5px;
 }
-
+.btn-city-add {
+  text-align: right;
+  float: right;
+  margin-right: -30px;
+  margin-top: -10px;
+}
+.btn-post-add {
+  text-align: left;
+  float: left;
+  margin-top: -15px;
+}
 .close-city, .close-post {
   background-color: #95a5a6;
   border: none;
@@ -187,17 +218,14 @@ li {
 .del-post {
     background-color: #95a5a6;
     border: none;
+    margin-right: 5px;
 }
 
-.edit-post {
-  background-color: #f7882f;
-  border: none;
-}
-
-.save-city, .save-post {
+.edit-post, .save-city, .save-post {
   background-color: #f7882f;
   border: none;
   vertical-align: top;
+  margin-right: 15px;
 }
 
 .splash-main{
@@ -215,10 +243,6 @@ li {
   background-image: url("https://images.unsplash.com/photo-1487581424120-18f3611a63e6?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1033&amp;q=80&amp;cs=tinysrgb&amp;crop=");
 }
 
-.post-text {
-  background-color: white;
-  font-size: 20px;
-}
 
 .post-footer {
   background-color: white;
@@ -239,17 +263,6 @@ li {
 
 .ListItemContainer{
   background-color: #fff;
-}
-.postFormBox{
-  background-color: #bdc3c7;
-}
-
-.PostList {
-  width: 75%;
-}
-
-.post-list-space {
-  padding: 5px;
 }
 
 .topnav {

@@ -1,15 +1,6 @@
 
 import React, { Component } from "react";
 
-import {
-  Modal,
-  ModalHeader,
-  ModalTitle,
-  ModalClose,
-  ModalBody,
-  ModalFooter
-} from 'react-modal-bootstrap';
-
 class Post extends Component {
   constructor(props) {
     super(props);
@@ -86,33 +77,27 @@ class Post extends Component {
     if (!this.state.editMode){
       return(
         <div className="viewPost">
-
-          <hr />
           <div className="postTitle">{this.state.title}</div>
-          <hr />
           <div className="postContent">{this.state.text}</div>
           <div className='post-footer'>
             <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete</button>
             <button className='btn btn-primary edit-post' onClick={this.editModeSwap}>Edit Post</button>
           </div>
-        <hr />
         </div>
       )
     } else {
       return(
         <div className="viewPost">
           <form action="#" onSubmit={this.handlePostUpdate} method="PUT" className="post-update-form">
-          <hr />
           <div className="postTitle">
             <input type="text" name="title" value={this.state.title} size={this.state.title.length} onChange={this.handleTitleChange} required />
           </div>
-          <hr />
           <div className="postContent">
             <input type="text" name="text" size={this.state.text.length} value={this.state.text} onChange={this.handleTextChange} required />
           </div>
           <div className='post-footer'>
-            <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
-            <button className='btn btn-primary save-post'>Save Changes</button>
+            <button className='btn btn-primary del-post' onClick={this.openModal}>Delete</button>
+            <button className='btn btn-primary save-post'>Save Post</button>
           </div>
         </form>
       </div>

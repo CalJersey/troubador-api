@@ -25,7 +25,6 @@ class PageContent extends Component {
 
   render() {
     let pageContentNode = null;
-    let displayMessageNode = null;
     if (this.state.pageContext){
       pageContentNode = this.renderpageContent();
     } else {

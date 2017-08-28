@@ -11,9 +11,9 @@ class Header extends Component {
       <div className="nav-bar">
         <h1>Wayfarer</h1>
         <UserAuthContainer
-          userId = {this.props.userId}
-          isAuthenticated = {this.props.isAuthenticated}
-          loginUrl = {this.props.loginUrl} />
+          userId={this.props.userId}
+          isAuthenticated={this.props.isAuthenticated}
+          loginUrl={this.props.loginUrl} />
 
       </div>
     );

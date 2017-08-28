@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CityListItem from './CityListItem'
-import CityForm from "./CityForm";
 
 class CityList extends Component {
 

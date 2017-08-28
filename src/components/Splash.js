@@ -16,7 +16,7 @@ class Splash extends Component {
             <Header
               isAuthenticated={this.props.route.config.isAuthenticated}
               userId={this.props.params.uId || this.props.route.config.defaultUserId}
-              loginUrl = {this.props.route.config.loginUrl} />
+              loginUrl={this.props.route.config.loginUrl} />
 
           <div className="row splash-main">
             <div className="col-md-12 image-splash">

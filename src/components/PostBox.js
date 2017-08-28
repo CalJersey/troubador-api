@@ -19,7 +19,6 @@ class PostBox extends Component {
 
   loadPostsFromServer() {
     axios.get(`${this.props.citiesPostUrl}${this.props.cityId}`).then(res => {
-      console.log(res.data)
       this.setState({ data: res.data.posts });
     })
   }
@@ -54,11 +53,7 @@ class PostBox extends Component {
     axios
       .delete(`${this.props.postGetUrl}${id}`)
       .then(res => {
-        console.log('Post Deleted');
-        let posts = this.state.data.filter(function(post) {
-          return post._id !== res._id;
-        });
-          this.loadPostsFromServer()
+        this.loadPostsFromServer()
         })
       .catch(err => {
         console.log(err);
@@ -84,20 +79,17 @@ class PostBox extends Component {
   }
   render() {
     return (
-      <div className="PostBox">
+      <div>
         <h3>What people are saying</h3>
-        <div className="row ">
-          <div className="col-md-12">
-            <PostForm onPostSubmit={ this.handlePostSubmit }/>
-          </div>
-          <div className="col-md-12 list-item">
-            <PostList
-              loadPostsFromServer={this.loadPostsFromServer}
-              onPostDelete={this.handlePostDelete}
-              onPostUpdate={this.handlePostUpdate}
-              data={this.state.data}
-            />
-          </div>
+
+        <div className="postBox">
+          <PostForm onPostSubmit={ this.handlePostSubmit }/>
+          <PostList
+            loadPostsFromServer={this.loadPostsFromServer}
+            onPostDelete={this.handlePostDelete}
+            onPostUpdate={this.handlePostUpdate}
+            data={this.state.data}
+          />
         </div>
       </div>
 

@@ -1,13 +1,8 @@
 
 import React, { Component } from 'react';
 import Post from './Post';
-import '../MainStyle.css';
 
 class PostList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let postNodes = this.props.data.map(post => {
       return <Post
@@ -19,14 +14,9 @@ class PostList extends Component {
               onPostUpdate={this.props.onPostUpdate} />;
     });
     return (
-  <div className="PostList">
-     <div className="row container">
-        <div className="col-sm-8 post-text">
+      <div className="postList">
         {postNodes}
-        </div>
-     </div>
- </div>
-
+      </div>
     );
   }
 }

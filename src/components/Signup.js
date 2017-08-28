@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
 import $ from "jquery-ajax";
-import { Button, Card, Row, Col } from "react-materialize";
+import { Button } from "react-materialize";
 import Header from "./Header";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state={
       username: "",
       password: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handlePasswordChange=this.handlePasswordChange.bind(this);
+    this.handleUsernameChange=this.handleUsernameChange.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault()
-    let username = this.state.username;
-    let password = this.state.password;
+    let username=this.state.username;
+    let password=this.state.password;
     $.ajax({
       method: "POST",
       url: this.props.route.config.signupUrl,
@@ -48,7 +48,7 @@ class SignUp extends Component {
       <Header
         isAuthenticated={this.props.route.config.isAuthenticated}
         userId={this.state.userId}
-        loginUrl = {this.props.route.config.loginUrl} />
+        loginUrl={this.props.route.config.loginUrl} />
       <div className="row">
         <h1>Signup</h1>
         <form onSubmit={this.handleSubmit}>

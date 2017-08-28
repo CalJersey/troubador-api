@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import Header from "./Header"
-// import {Link} from "react-router";
-// import {browserHistory} from "react-router";
 import CityContainer from "./CityContainer";
 import PageContent from "./PageContent";
 import CityInfo from "./CityInfo";
 import PostBox from "./PostBox";
-import UserAuth from "./UserAuth";
-
-// import { Button, Card, Row, Col, Input } from "react-materialize";
 
 class Main extends Component {
   constructor(props){
@@ -16,8 +11,8 @@ class Main extends Component {
     this.state={
       userId:this.props.params.uId || this.props.route.config.defaultUserId,
       cityId:this.props.params.cid || this.props.route.config.defaultCityId,
-      pageContext: this.props.route.config.pageContext,
-      PageDisplayMessage: this.props.params.PageDisplayMessage,
+      pageContext:this.props.route.config.pageContext,
+      PageDisplayMessage:this.props.params.PageDisplayMessage,
     }
 
   }
@@ -33,20 +28,18 @@ class Main extends Component {
   }
 
 render() {
-  console.log("state=",this.state)
-
-  let pageContentNode = null;
+  let pageContentNode=null;
   if (this.state.pageContext || this.state.PageDisplayMessage ){
-    pageContentNode = this.renderPageContent();
+    pageContentNode=this.renderPageContent();
   }
   return (
     <div className="container-fluid">
       <Header
         isAuthenticated={this.props.route.config.isAuthenticated}
         userId={this.state.userId}
-        loginUrl = {this.props.route.config.loginUrl} />
+        loginUrl={this.props.route.config.loginUrl} />
 
-      <!-- //content below heder and above main content (individual header/messages) -->
+      {/* content below heder and above main content (individual header/messages) */}
       {pageContentNode}
 
       <div className="row">
@@ -62,7 +55,6 @@ render() {
               userId={this.state.userId}
               citiesViewUrl={this.props.route.config.citiesViewUrl}
               citiesGetUrl={this.props.route.config.citiesGetUrl} />
-
             <PostBox
               cityId={this.state.cityId}
               postGetUrl={this.props.route.config.postGetUrl}

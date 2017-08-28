@@ -19,10 +19,10 @@ class CityInfo extends Component {
 
   render() {
     return (
-      <div className="CityInfo">
+      <div className="cityInfo">
         <h2>{this.state.data.name}</h2>
         <div className="image-space">
-          <img src={this.state.data.imageUrl} height="75%" width="75%" />
+          <img src={this.state.data.imageUrl} alt={this.state.data.namez} />
         </div>
       </div>
     );

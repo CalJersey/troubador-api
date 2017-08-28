@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import CityList from './CityList';
-import CityInfo from "./CityInfo";
 import CityForm from "./CityForm";
 
 
