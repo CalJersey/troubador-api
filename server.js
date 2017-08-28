@@ -224,8 +224,8 @@ router.delete('/posts/:id', function(req, res) {
 });
 
 
-//start server
-// var port = process.env.PORT || 5001;
-// app.listen(port, function() {
-//   console.log(`api running on port ${port}`);
-// });
+start server
+var port = process.env.PORT || 3001;
+app.listen(port, function() {
+  console.log(`api running on port ${port}`);
+});
